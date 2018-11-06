@@ -1,0 +1,47 @@
+body
+{
+    background-color: #f5f3f5;
+    color: #2e4057;
+}
+
+#Message
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+i.fa
+{
+    font-size: 44px;
+    color: #f5f3f5;
+}
+i.fa:hover
+{
+    color: #ED7D3A;
+}
+i.fa-times
+{
+    color:#EF2D56
+}
+i.fa-circle-o
+{
+    color:#0CCE6B
+}
+table
+{
+    background: #363537;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, td
+{
+    border: 1px solid #DCED31
+}
+
+td
+{
+    background-color: #363537;
+    padding: 15px;
+}
+
+ /*03256c*/

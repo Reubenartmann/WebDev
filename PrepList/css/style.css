@@ -1,0 +1,27 @@
+body {
+  background-color: #EFE9E7;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.tableRow {
+  background-color: #DAE0F2;
+  
+}
+
+.subRow {
+  background-color: #EFE9E7;
+
+}
+
+td {
+  border-style: solid;
+  font-weight: bold;
+  padding: 6px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+td:hover {
+  background-color: #F9CFF2;
+}
