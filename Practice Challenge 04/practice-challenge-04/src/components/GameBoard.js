@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import firebase from '../firebase.js'
+import firebase, { auth, provider } from '../firebase.js'
 
 
 var date = new Date();
@@ -20,6 +20,8 @@ class GameBoard extends Component {
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
+       this.login = this.login.bind(this);
+       this.logout = this.logout.bind(this);
   }
 
   handleChange(e) {
@@ -28,12 +30,31 @@ class GameBoard extends Component {
     });
   }
 
+logout() {
+  auth.signOut()
+    .then(() => {
+      this.setState({
+        user: null
+      });
+    });
+}
+
+login() {
+  auth.signInWithPopup(provider)
+    .then((result) => {
+      const user = result.user;
+      this.setState({
+        user
+      });
+    });
+}
+
   handleSubmit(e) {
   e.preventDefault();
   // usersRef is our host, user is our data
   const chatRef = firebase.database().ref('chats');
   const chats = {
-    from: this.state.username,
+    from: this.state.user.displayName || this.state.user.email,
     message: this.state.chat,
     sent: timestamp
   }
@@ -52,6 +73,13 @@ removeItem(itemId) {
 }
 
 componentDidMount() {
+
+  auth.onAuthStateChanged((user) => {
+  if (user) {
+    this.setState({ user });
+  }
+});
+
   const chatsRef = firebase.database().ref('chats');
   chatsRef.on('value', (snapshot) => {
     let chats = snapshot.val();
@@ -90,11 +118,18 @@ componentDidMount() {
   render() {
     return (
       <div className='ChatBox'>
+
         <header>
             <div>
               <h3>Chat</h3>
+              {this.state.user ?
+                <button onClick={this.logout}>Log Out</button>
+                :
+                <button onClick={this.login}>Log In</button>
+              }
             </div>
         </header>
+
         <div className='chat-container'>
           <section className='add-chat'>
               <form onSubmit={this.handleSubmit}>
