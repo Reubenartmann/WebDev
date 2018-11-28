@@ -74,13 +74,6 @@ removeItem(itemId) {
 }
 
 componentDidMount() {
-
-  auth.onAuthStateChanged((user) => {
-  if (user) {
-    this.setState({ user });
-  }
-});
-
   const chatsRef = firebase.database().ref('chats');
   chatsRef.on('value', (snapshot) => {
     let chats = snapshot.val();
@@ -136,9 +129,7 @@ componentDidMount() {
         <div className='ChatBox'>
           <section className='add-chat'>
               <form onSubmit={this.handleSubmit}>
-                <input type="text" name="username" placeholder="Name" onChange={this.handleChange} value={this.state.username}/>
-                <input type="text" name="chat" placeholder="Message" onChange={this.handleChange} value={this.state.chat}/>
-                <button>Send</button>
+                <input type="text" name="chat" className='chatInput' placeholder="Message" onChange={this.handleChange} value={this.state.chat}/>
               </form>
           </section>
           <section className='display-chat'>

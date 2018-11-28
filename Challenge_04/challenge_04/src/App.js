@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import GameBoard from './components/GameBoard';
-import ChatRoom from './components/ServerList.js';
-import Home from './components/index';
+import GameBoard from './components/gameBoard';
+import ChatRoom from './components/chatRoom.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const MainMenu = () => {
   return (
     <div className='navigation'>
-      <Link to="/">
-        <button>Home</button>
+      <Link to="/chatRoom">
+        <button>Chat Room</button>
       </Link>
-      <Link to="/GameBoard">
+      <Link to="/gameBoard">
         <button>New Game</button>
-      </Link>
-      <Link to="/ServerList">
-        <button>Servers</button>
       </Link>
     </div>
   );
@@ -31,9 +27,8 @@ const MainMenu = () => {
                 <MainMenu />
               </header>
               <div>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/GameBoard" component={GameBoard} />
-              <Route exact path="/ServerList" component={ServerList} />
+              <Route exact path="/gameBoard" component={GameBoard} />
+              <Route exact path="/chatRoom" component={ChatRoom} />
               </div>
             </div>
           </Router>
@@ -41,4 +36,5 @@ const MainMenu = () => {
       }
     }
 
-    export default App;
+
+export default App;
