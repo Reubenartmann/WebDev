@@ -20,6 +20,7 @@ class GameBoard extends Component {
     }
      this.handleChange = this.handleChange.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
+
        this.login = this.login.bind(this);
        this.logout = this.logout.bind(this);
   }
@@ -117,8 +118,7 @@ componentDidMount() {
 
   render() {
     return (
-      <div className='ChatBox'>
-
+      <div className='RenderAll'>
         <header>
             <div>
               <h3>Chat</h3>
@@ -130,7 +130,10 @@ componentDidMount() {
             </div>
         </header>
 
-        <div className='chat-container'>
+        <table id="gameBoard">
+        </table>
+
+        <div className='ChatBox'>
           <section className='add-chat'>
               <form onSubmit={this.handleSubmit}>
                 <input type="text" name="username" placeholder="Name" onChange={this.handleChange} value={this.state.username}/>
