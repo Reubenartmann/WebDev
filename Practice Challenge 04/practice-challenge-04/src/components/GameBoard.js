@@ -112,7 +112,6 @@ componentDidMount() {
                       <p className="name">{chat.from}</p>
                       <p>{chat.message}</p>
                       <p className="sent">sent: {(new Date(chat.sent)).toLocaleString()}</p>
-                      {/* <button onClick={() => this.removeItem(chat.id)}>Remove Message</button>  */}
                     </li>
                   )
                 })}

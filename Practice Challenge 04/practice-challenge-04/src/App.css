@@ -3,6 +3,7 @@
   bottom: 0;
   width: 100%;
   background: #F1F0EA;
+  border: 2px solid black;
 }
 
 .display-chat{
