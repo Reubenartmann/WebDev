@@ -1,3 +1,43 @@
 .display-chat{
   border: 2px solid black;
 }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fff;
+ padding-bottom: 8%
+}
+
+header {
+  color: #fff;
+  background-color: #2e86ab;
+  padding: 33px 0 25px 15px;
+}
+
+header h1 {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+
+}
+
+header i {
+  vertical-align: middle;
+  margin-left: 12px;
+}
+
+
+h2 {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+}
+
+.navigation{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

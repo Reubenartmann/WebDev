@@ -2,16 +2,13 @@ import firebase from 'firebase'
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCCWH4dEahRqJLAzH6Cb8QnB8UJbsFjgGc",
-  authDomain: "challenge04practice.firebaseapp.com",
-  databaseURL: "https://challenge04practice.firebaseio.com",
-  projectId: "challenge04practice",
-  storageBucket: "challenge04practice.appspot.com",
-  messagingSenderId: "394203413774"
+  apiKey: "AIzaSyDF5_2xAVmCeSM1h7upbnISEBsJ6drvneQ",
+  authDomain: "c04practise.firebaseapp.com",
+  databaseURL: "https://c04practise.firebaseio.com",
+  projectId: "c04practise",
+  storageBucket: "c04practise.appspot.com",
+  messagingSenderId: "951189355969"
 };
 firebase.initializeApp(config);
-
-export const provider = new firebase.auth.GoogleAuthProvider();
-export const auth = firebase.auth();
 
 export default firebase;
