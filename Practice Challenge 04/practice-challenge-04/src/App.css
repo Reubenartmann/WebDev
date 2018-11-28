@@ -1,0 +1,11 @@
+.ChatBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #F1F0EA;
+}
+
+.display-chat{
+  height: 200px;
+  overflow: auto;
+}
