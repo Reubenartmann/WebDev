@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import '../App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import firebase from '../firebase.js'
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 var date = new Date();
 var timestamp = date.getTime();
@@ -66,18 +71,20 @@ componentDidMount() {
 render() {
   return (
     <div className='app'>
-      <header>
-          <div className='wrapper'>
-            <h1>Chat</h1>
-          </div>
-      </header>
-
+      chat room
       <div className='chat-container'>
         <section className='add-chat'>
             <form onSubmit={this.handleSubmit}>
-              <input type="text" name="username" placeholder="Name" onChange={this.handleChange} value={this.state.username}/>
-              <input type="text" name="chat" placeholder="Message" onChange={this.handleChange} value={this.state.chat}/>
-              <button>Send</button>
+              <FormControl>
+              <InputLabel htmlFor="component-simple">Name</InputLabel>
+              <Input type="text" name="username" placeholder="What's your name?" onChange={this.handleChange} value={this.state.username} />
+              </FormControl>
+              <FormControl>
+              <InputLabel htmlFor="component-simple">Message</InputLabel>
+              <Input type="text" name="chat" placeholder="What's your message?" onChange={this.handleChange} value={this.state.chat} />
+              </FormControl>
+              <Button id="addFriend" onClick={this.handleSubmit}>Send</Button>
+
             </form>
         </section>
 
