@@ -6,7 +6,7 @@ import ChatRoom from './components/chatRoom.js';
 import Friends from './components/addUsers.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-
+import posed from 'react-pose';
 
 const MainMenu = () => {
   return (

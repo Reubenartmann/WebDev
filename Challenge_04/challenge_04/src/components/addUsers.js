@@ -161,8 +161,8 @@ class Friends extends Component {
           </Card>
         )
       })}
-  </div>
-  </div>
+        </div>
+        </div>
         </section>
         </div>
         )

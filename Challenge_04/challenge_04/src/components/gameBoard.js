@@ -100,75 +100,86 @@ class GameBoard extends React.Component{
             )
             ? this.state.p2 : this.state.p1;
         }
-        // checkVertical(board) {
-        //   for (let tempRow = 2; tempRow < 3; tempRow++) {
-        //     for (let tempColumn = 0; tempColumn < 3; tempColumn++) {
-        //       if (board[tempRow][tempColumn]) {
-        //         if (board[tempRow][tempColumn] === board[tempRow - 1][tempColumn] &&
-        //             board[tempRow][tempColumn] === board[tempRow - 2][tempColumn] &&
-        //             board[tempRow][tempColumn] === board[tempRow - 3][tempColumn]) {
-        //           return board[tempRow][tempColumn];
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
 
-        // checkHorizontal(board) {
-        //   // Check only if column is 3 or less
-        //   for (let tempRow = 0; tempRow < 3; tempRow++) {
-        //     for (let tempColumn = 0; tempColumn < 3; tempColumn++) {
-        //       if (board[tempRow][tempColumn]) {
-        //         if (board[tempRow][tempColumn] === board[tempRow][tempColumn + 1] &&
-        //             board[tempRow][tempColumn] === board[tempRow][tempColumn + 2] &&
-        //             board[tempRow][tempColumn] === board[tempRow][tempColumn + 3]) {
-        //           return board[tempRow][tempColumn];
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
+        checkVertical(board) {
 
-        // checkDiagonalRight(board) {
-        //   // Check only if row is 3 or greater AND column is 3 or less
-        //   for (let tempRow = 2; tempRow < 3; tempRow++) {
-        //     for (let tempColumn = 0; tempColumn < 3; tempColumn++) {
-        //       if (board[tempRow][tempColumn]) {
-        //         if (board[tempRow][tempColumn] === board[tempRow - 1][tempColumn + 1] &&
-        //             board[tempRow][tempColumn] === board[tempRow - 2][tempColumn + 2] &&
-        //             board[tempRow][tempColumn] === board[tempRow - 3][tempColumn + 3]) {
-        //           return board[tempRow][tempColumn];
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
+        let tempRow = 2;
 
-        // checkDiagonalLeft(board) {
-        //   // Check only if row is 3 or greater AND column is 3 or greater
-        //   for (let tempRow = 2; tempRow < 3; tempRow++) {
-        //     for (let tempColumn = 2; tempColumn < 3; tempColumn++) {
-        //       if (board[tempRow][tempColumn]) {
-        //         if (board[tempRow][tempColumn] === board[tempRow - 1][tempColumn - 1] &&
-        //             board[tempRow][tempColumn] === board[tempRow - 2][tempColumn - 2] &&
-        //             board[tempRow][tempColumn] === board[tempRow - 3][tempColumn - 3]) {
-        //           return board[tempRow][tempColumn];
-        //         }
-        //       }
-        //     }
-        //   }
-        // }
+          for (let tempColumn = 0; tempColumn < 2; tempColumn++) {
 
-        // checkDraw(board) {
-        //   for (let tempRow = 0; tempRow < 3; tempRow++) {
-        //     for (let tempColumn = 0; tempColumn < 3; tempColumn++) {
-        //       if (board[tempRow][tempColumn] === null) {
-        //         return null;
-        //       }
-        //     }
-        //   }
-        //   return 'draw';
-        // }
+            if (board[tempRow][tempColumn]) {
+              if (board[tempRow][tempColumn] === board[tempRow - 1][tempColumn] &&
+                  board[tempRow][tempColumn] === board[tempRow - 2][tempColumn]) {
+                return board[tempRow][tempColumn];
+              }
+            }
+          }
+
+      }
+
+      checkHorizontal(board) {
+
+        for (let tempRow = 0; tempRow < 2; tempRow++) {
+          let tempColumn = 0;
+            if (board[tempRow][tempColumn]) {
+              if (board[tempRow][tempColumn] === board[tempRow][tempColumn + 1] &&
+                  board[tempRow][tempColumn] === board[tempRow][tempColumn + 2]) {
+                return board[tempRow][tempColumn];
+              }
+
+          }
+        }
+      }
+
+      checkDiagonalRight(board) {
+        // Check only if row is 3 or greater AND column is 3 or less
+        let tempRow = 2;
+          let tempColumn = 0;
+            if (board[tempRow][tempColumn]) {
+              if (board[tempRow][tempColumn] === board[tempRow - 1][tempColumn + 1] &&
+                  board[tempRow][tempColumn] === board[tempRow - 2][tempColumn + 2]) {
+                return board[tempRow][tempColumn];
+              }
+            }
+          }
+
+
+
+      checkDiagonalLeft(board) {
+        // Check only if row is 3 or greater AND column is 3 or greater
+        let tempRow = 2;
+          let tempColumn = 2;
+            if (board[tempRow][tempColumn]) {
+              if (board[tempRow][tempColumn] === board[tempRow - 1][tempColumn - 1] &&
+                  board[tempRow][tempColumn] === board[tempRow - 2][tempColumn - 2]) {
+                return board[tempRow][tempColumn];
+              }
+            }
+          }
+
+
+
+      checkDraw(board) {
+
+            if (board[0][0] !== null &&
+              board[0][1] !== null &&
+              board[0][2] !== null &&
+              board[1][0] !== null&&
+              board[1][1] !== null&&
+              board[1][2] !== null&&
+              board[2][0] !== null&&
+              board[2][1] !== null&&
+              board[2][2] !== null) {
+              return 'draw';
+            }
+
+        return null;
+      }
+
+      checkAll(board) {
+
+        return this.checkVertical(board) || this.checkDiagonalRight(board) || this.checkDiagonalLeft(board) || this.checkHorizontal(board) || this.checkDraw(board);
+      }
 
         checkAll(board) {
           //return this.checkVertical(board) || this.checkDiagonalRight(board) || this.checkDiagonalLeft(board) || this.checkHorizontal(board) || this.checkDraw(board);
@@ -268,7 +279,6 @@ class GameBoard extends React.Component{
               <div id='playerSelections'>
               <section>
               <form onSubmit={this.playerSelected}>
-
                 <select id="pAccountIdSelector" name="pAccountId" placeholder="Who... Are you?" onChange={this.handleChange} value={this.state.pAccountId} >
                 <option value="" disabled selected>Select your account</option>
                 {this.state.accounts.map((accountsLocal) => {

@@ -33,9 +33,9 @@ h2 {
 }
 
 .navigation{
-
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
-  position: relative;
 }
 
 
@@ -65,8 +65,6 @@ table {
   cursor: pointer;
 }
 
-
-
 .circles {
   margin: -40px 0 25px 0;
   display: flex;
@@ -85,6 +83,14 @@ table {
   width: 60px;
   background-color: #FFF;
   border-radius: 100px;
+  transition: .5s;
+}
+
+.white:hover{
+ background: fff#;
+ box-shadow: 0 0 10px rgba(255, 255,255,1),
+             0 0 20px rgba(255, 255,255,1),
+             0 0 30px rgba(255, 255,255,1);
 }
 
 .red {
@@ -101,4 +107,8 @@ table {
   background-color: yellow;
   border-radius: 100px;
   transition: background-color 0.5s;
+}
+
+.add-item{
+  display: flex;
 }

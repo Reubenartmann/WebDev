@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import GameBoard from './components/GameBoard';
-import ChatRoom from './components/ServerList.js';
+import ServerList from './components/ServerList.js';
 import Home from './components/index';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 

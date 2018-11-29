@@ -50,6 +50,21 @@ class ChatRoom extends Component {
 }
 
 componentDidMount() {
+  const accountRef = firebase.database().ref('friends');
+  accountRef.on('value', (snapshot) => {
+    let accountshot = snapshot.val();
+    let newState1 = [];
+    for (let accunt in accountshot) {
+      newState1.push({
+        id: accunt,
+        name: accountshot[accunt].name,
+      });
+    }
+    this.setState({
+      accounts: newState1
+    });
+  });
+
   const chatsRef = firebase.database().ref('chats');
   chatsRef.on('value', (snapshot) => {
     let chats = snapshot.val();
@@ -75,6 +90,8 @@ render() {
       <div className='chat-container'>
         <section className='add-chat'>
             <form onSubmit={this.handleSubmit}>
+
+
               <FormControl>
               <InputLabel htmlFor="component-simple">Name</InputLabel>
               <Input type="text" name="username" placeholder="What's your name?" onChange={this.handleChange} value={this.state.username} />
